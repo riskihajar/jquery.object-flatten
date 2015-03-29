@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Example Object Flatten</title>
+</head>
+<body>
+<h1>Example </h1>
+JSON : <br>
+<pre id="source">
+{
+    "feature": {
+        "exterior": {
+            "front_lamp": "Halogen",
+            "spoiler": true
+        },
+        "interior": {
+            "additional_seat": true,
+            "air_conditioner": true
+        }
+    },
+    "name": "Honda HRV",
+    "spec": {
+        "color": "Black",
+        "engine": {
+            "fuel_system": "PGM FI",
+            "type": "SOHC 16 Valve i-VTEC"
+        }
+    },
+    "type": "Car"
+}
+</pre>
+<br>
+
+Flatten Object : <br>
+<pre id="result">
+{
+    "feature.exterior.front_lamp": "Halogen",
+    "feature.exterior.spoiler": true,
+    "feature.interior.additional_seat": true,
+    "feature.interior.air_conditioner": true,
+    "name": "Honda HRV",
+    "spec.color": "Black",
+    "spec.engine.fuel_system": "PGM FI",
+    "spec.engine.type": "SOHC 16 Valve i-VTEC",
+    "type": "Car"
+}
+</pre>
+<br>
+Script : <br>
+<pre>
+	&lt;script src=&quot;jquery.min.js&quot;&gt;&lt;/script&gt;
+	&lt;script src=&quot;jquery.object-flatten.js&quot;&gt;&lt;/script&gt;
+	&lt;script&gt;
+	    $(function(){
+
+	    	flatten = $.objectFlatten( the_object );
+
+	    	console.log(flatten);
+	    });
+	&lt;/script&gt;
+</pre>
+	<script src="jquery.min.js"></script>
+	<script src="jquery.object-flatten.js"></script>
+	<script>
+	    $(function(){
+
+	    	product = JSON.parse( $('#source').text() );
+	    	flatten = $.objectFlatten(product);
+
+	    	console.log(flatten);
+	    });
+	</script>
+</body>
+</html>
